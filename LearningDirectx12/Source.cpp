@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include "Window.h"
 #include "Timer.h"
+#include "Device.h"
 
 using namespace Program;
 
@@ -23,8 +24,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     windowProps.title = L"Learning DirectX 12";
     windowProps.instance = hInstance;
 
-    Window window(windowProps);
+    DX12::Device device;
+    logger.Output(std::to_string(device.GetAdapterDescription().VendorId));
 
+    Window window(windowProps);
 
     while (!window.ShouldClose())
     {

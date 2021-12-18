@@ -12,6 +12,9 @@
 #include <strsafe.h>
 #include <atlbase.h>
 #include <atlconv.h>
+#include <d3d12.h>
+#include <dxgi1_5.h>
+#include <wrl/client.h>
 
 #include <cassert>
 #include <string>
@@ -21,5 +24,33 @@
 #include <chrono>
 #include <sstream>
 
-#define CheckResult(hResult) if (FAILED(hResult)) { MessageBoxA(0, "Something failed", "Fatal Error", MB_OK); PostQuitMessage(GetLastError()); __debugbreak(); }
+using Microsoft::WRL::ComPtr;
 
+namespace Program::DX12
+{
+    class com_exception : public std::exception
+    {
+    public:
+        com_exception(HRESULT hr) : result(hr) {}
+
+        const char* what() const override
+        {
+            static char s_str[64] = {};
+            sprintf_s(s_str, "Failure with HRESULT of %08X",
+                static_cast<unsigned int>(result));
+            return s_str;
+        }
+
+    private:
+        HRESULT result;
+    };
+
+    inline void ThrowIfFailed(HRESULT hr)
+    {
+        if (FAILED(hr))
+        {
+            throw com_exception(hr);
+        }
+    }
+
+}

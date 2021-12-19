@@ -5,6 +5,7 @@
 #include "Device.h"
 #include "CommandQueue.h"
 #include "CommandAllocator.h"
+#include "Fence.h"
 
 using namespace Program;
 
@@ -27,6 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     DX12::Device device;
     DX12::CommandQueue commandQueue(device);
     DX12::CommandAllocator commandAllocator(device);
+    DX12::Fence fence(device);
 
     while (!window.ShouldClose())
     {

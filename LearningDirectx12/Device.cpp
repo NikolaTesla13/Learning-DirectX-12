@@ -13,19 +13,19 @@ namespace Program::DX12
 	{
 	}
 
-	void Device::CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ComPtr<ID3D12CommandQueue> commandQueue) const
+	void Device::CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ComPtr<ID3D12CommandQueue>& commandQueue) const
 	{
-		ThrowIfFailed(m_Device->CreateCommandQueue(desc, IID_PPV_ARGS(&commandQueue)));
+		ThrowIfFailed(m_Device->CreateCommandQueue(desc, IID_PPV_ARGS(commandQueue.GetAddressOf())));
 	}
 
-	void Device::CreateCommandAllocator(ComPtr<ID3D12CommandAllocator> commandAllocator) const
+	void Device::CreateCommandAllocator(ComPtr<ID3D12CommandAllocator>& commandAllocator) const
 	{
-		ThrowIfFailed(m_Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator)));
+		ThrowIfFailed(m_Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf())));
 	}
 
-	void Device::CreateFence(ComPtr<ID3D12Fence> fence) const
+	void Device::CreateFence(ComPtr<ID3D12Fence>& fence) const
 	{
-		ThrowIfFailed(m_Device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
+		ThrowIfFailed(m_Device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf())));
 	}
 
 	void Device::CreateFactory()

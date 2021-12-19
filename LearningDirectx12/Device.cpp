@@ -19,6 +19,11 @@ namespace Program::DX12
 		ThrowIfFailed(m_Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator)));
 	}
 
+	void Device::CreateFence(ID3D12Fence* fence) const
+	{
+		ThrowIfFailed(m_Device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;

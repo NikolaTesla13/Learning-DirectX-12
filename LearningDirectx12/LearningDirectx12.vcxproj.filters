@@ -39,6 +39,9 @@
     <ClCompile Include="CommandAllocator.cpp">
       <Filter>Source Files\Directx12</Filter>
     </ClCompile>
+    <ClCompile Include="Fence.cpp">
+      <Filter>Source Files\Directx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
     <ClInclude Include="CommandAllocator.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Fence.h">
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
   </ItemGroup>

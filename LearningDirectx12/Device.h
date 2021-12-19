@@ -12,6 +12,7 @@ namespace Program::DX12
 
 		void CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ID3D12CommandQueue* commandQueue) const;
 		void CreateCommandAllocator(ID3D12CommandAllocator* commandAllocator) const;
+		void CreateFence(ID3D12Fence* fence) const;
 
 	private:
 		void CreateFactory();

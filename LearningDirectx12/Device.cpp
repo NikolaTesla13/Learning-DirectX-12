@@ -9,17 +9,21 @@ namespace Program::DX12
 		CreateDevice();
 	}
 
-	void Device::CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ID3D12CommandQueue* commandQueue) const
+	Device::~Device()
+	{
+	}
+
+	void Device::CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ComPtr<ID3D12CommandQueue> commandQueue) const
 	{
 		ThrowIfFailed(m_Device->CreateCommandQueue(desc, IID_PPV_ARGS(&commandQueue)));
 	}
 
-	void Device::CreateCommandAllocator(ID3D12CommandAllocator* commandAllocator) const
+	void Device::CreateCommandAllocator(ComPtr<ID3D12CommandAllocator> commandAllocator) const
 	{
 		ThrowIfFailed(m_Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator)));
 	}
 
-	void Device::CreateFence(ID3D12Fence* fence) const
+	void Device::CreateFence(ComPtr<ID3D12Fence> fence) const
 	{
 		ThrowIfFailed(m_Device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
 	}
@@ -54,7 +58,7 @@ namespace Program::DX12
 				continue;
 			}
 
-			if (SUCCEEDED(D3D12CreateDevice(m_Adapter, D3D_FEATURE_LEVEL_12_0, _uuidof(ID3D12Device), nullptr)))
+			if (SUCCEEDED(D3D12CreateDevice(m_Adapter.Get(), D3D_FEATURE_LEVEL_12_0, _uuidof(ID3D12Device), nullptr)))
 			{
 				break;
 			}
@@ -65,9 +69,9 @@ namespace Program::DX12
 
 	void Device::CreateDevice()
 	{
-		ThrowIfFailed(D3D12CreateDevice(m_Adapter, D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&m_Device)));
+		ThrowIfFailed(D3D12CreateDevice(m_Adapter.Get(), D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&m_Device)));
 #ifdef _DEBUG
-		ThrowIfFailed(m_Device->QueryInterface(&m_DebugDevice));
+		ThrowIfFailed(m_Device->QueryInterface(m_DebugDevice.ReleaseAndGetAddressOf()));
 #endif
 	}
 }

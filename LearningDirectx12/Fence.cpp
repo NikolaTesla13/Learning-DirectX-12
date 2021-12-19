@@ -6,4 +6,8 @@ namespace Program::DX12
 	{
 		device.CreateFence(m_Fence);
 	}
+
+	Fence::~Fence()
+	{
+	}
 }

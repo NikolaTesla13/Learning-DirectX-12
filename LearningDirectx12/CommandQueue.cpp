@@ -10,5 +10,9 @@ namespace Program::DX12
 
 		device.CreateCommandQueue(&queueDesc, m_CommandQueue);
 	}
+
+	CommandQueue::~CommandQueue()
+	{
+	}
 }
 

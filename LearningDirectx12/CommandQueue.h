@@ -9,8 +9,9 @@ namespace Program::DX12
 	{
 	public:
 		CommandQueue(const Device& device);
+		~CommandQueue();
 
 	private:
-		ID3D12CommandQueue* m_CommandQueue;
+		ComPtr<ID3D12CommandQueue> m_CommandQueue;
 	};
 }

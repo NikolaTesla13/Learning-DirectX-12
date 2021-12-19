@@ -15,22 +15,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     loggerProps.onlyDebug = true;
     loggerProps.shodID = true;
     loggerProps.showTime = true;
-
     Logger logger(loggerProps);
-    logger.Output("Creating the window!");
-
-
+    
     WindowProps windowProps;
     windowProps.height = 720;
     windowProps.width = 1080;
     windowProps.title = L"Learning DirectX 12";
     windowProps.instance = hInstance;
+    Window window(windowProps);
 
     DX12::Device device;
     DX12::CommandQueue commandQueue(device);
     DX12::CommandAllocator commandAllocator(device);
-
-    Window window(windowProps);
 
     while (!window.ShouldClose())
     {

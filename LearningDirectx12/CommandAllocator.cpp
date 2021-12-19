@@ -6,5 +6,9 @@ namespace Program::DX12
 	{
 		device.CreateCommandAllocator(m_CommandAllocator);
 	}
+
+	CommandAllocator::~CommandAllocator()
+	{
+	}
 }
 

@@ -9,8 +9,9 @@ namespace Program::DX12
 	{
 	public:
 		CommandAllocator(const Device& device);
+		~CommandAllocator();
 
 	private:
-		ID3D12CommandAllocator* m_CommandAllocator;
+		ComPtr<ID3D12CommandAllocator> m_CommandAllocator;
 	};
 }

@@ -9,11 +9,12 @@ namespace Program::DX12
 	{
 	public:
 		Fence(const Device& device);
+		~Fence();
 
 	private:
 		UINT m_FrameIndex;
 		HANDLE m_FenceEvent;
-		ID3D12Fence* m_Fence;
+		ComPtr<ID3D12Fence> m_Fence;
 		UINT64 m_FenceValue;
 	};
 }

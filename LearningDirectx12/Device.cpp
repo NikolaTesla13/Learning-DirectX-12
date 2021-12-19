@@ -9,6 +9,11 @@ namespace Program::DX12
 		CreateDevice();
 	}
 
+	void Device::CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ID3D12CommandQueue* commandQueue) const
+	{
+		ThrowIfFailed(m_Device->CreateCommandQueue(desc, IID_PPV_ARGS(&commandQueue)));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;
@@ -54,32 +59,5 @@ namespace Program::DX12
 #ifdef _DEBUG
 		ThrowIfFailed(m_Device->QueryInterface(&m_DebugDevice));
 #endif
-	}
-
-	IDXGIFactory4* Device::GetFactory()
-	{
-		return m_Factory;
-	}
-
-	ID3D12DebugDevice* Device::GetDebugDevice()
-	{
-		return m_DebugDevice;
-	}
-
-	IDXGIAdapter1* Device::GetAdapter()
-	{
-		return m_Adapter;
-	}
-
-	ID3D12Device* Device::GetDevice()
-	{ 
-		return m_Device;
-	}
-
-	DXGI_ADAPTER_DESC1 Device::GetAdapterDescription()
-	{
-		DXGI_ADAPTER_DESC1 desc;
-		m_Adapter->GetDesc1(&desc);
-		return desc;
 	}
 }

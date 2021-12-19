@@ -10,11 +10,7 @@ namespace Program::DX12
 		Device();
 		~Device() {};
 
-		IDXGIFactory4* GetFactory();
-		ID3D12DebugDevice* GetDebugDevice();
-		IDXGIAdapter1* GetAdapter();
-		ID3D12Device* GetDevice();
-		DXGI_ADAPTER_DESC1 GetAdapterDescription();
+		void CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ID3D12CommandQueue* commandQueue) const;
 
 	private:
 		void CreateFactory();

@@ -25,7 +25,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     windowProps.instance = hInstance;
 
     DX12::Device device;
-    logger.Output(std::to_string(device.GetAdapterDescription().VendorId));
 
     Window window(windowProps);
 

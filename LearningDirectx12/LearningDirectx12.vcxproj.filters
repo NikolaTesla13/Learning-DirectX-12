@@ -42,6 +42,12 @@
     <ClCompile Include="Fence.cpp">
       <Filter>Source Files\Directx12</Filter>
     </ClCompile>
+    <ClCompile Include="Swapchain.cpp">
+      <Filter>Source Files\Directx12</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTargetViews.cpp">
+      <Filter>Source Files\Directx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -66,6 +72,15 @@
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
     <ClInclude Include="Fence.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Swapchain.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTargetViews.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dx12.h">
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
   </ItemGroup>

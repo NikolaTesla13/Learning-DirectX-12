@@ -1,11 +1,12 @@
 #include "System.h"
 #include "Logger.h"
 #include "Window.h"
-#include "Timer.h"
 #include "Device.h"
 #include "CommandQueue.h"
 #include "CommandAllocator.h"
 #include "Fence.h"
+#include "Swapchain.h"
+#include "RenderTargetViews.h"
 
 using namespace Program;
 
@@ -29,11 +30,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     DX12::CommandQueue commandQueue(device);
     DX12::CommandAllocator commandAllocator(device);
     DX12::Fence fence(device);
+    DX12::Swapchain swapchain(device, window, commandQueue);
+    DX12::RenderTargetViews renderTargetView(device, swapchain);
 
     while (!window.ShouldClose())
     {
         window.BeginFrame();
-        Timer timer("New frame");
+        TIME("New frame");
 
         window.Quit();
         window.EndFrame();

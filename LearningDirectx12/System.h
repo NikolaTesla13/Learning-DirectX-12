@@ -11,9 +11,13 @@
 #include <strsafe.h>
 #include <atlbase.h>
 #include <atlconv.h>
-#include <d3d12.h>
-#include <dxgi1_5.h>
+#include "d3dx12.h"
+#include <dxgi1_6.h>
+#include <D3Dcompiler.h>
+#include <DirectXMath.h>
 #include <wrl/client.h>
+#include <wrl.h>
+#include <shellapi.h>
 
 #include <cassert>
 #include <string>
@@ -22,6 +26,13 @@
 #include <ctime>
 #include <chrono>
 #include <sstream>
+
+#include "Logger.h"
+#include "Timer.h"
+
+#define CONCAT_(x,y) x##y
+#define CONCAT(x,y) CONCAT_(x,y)
+#define TIME(x) Timer CONCAT(timer, __LINE__)(x)
 
 using Microsoft::WRL::ComPtr;
 

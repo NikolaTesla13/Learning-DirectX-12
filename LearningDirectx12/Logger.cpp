@@ -1,4 +1,4 @@
-#include "Logger.h"
+#include "System.h"
 
 namespace Program
 {

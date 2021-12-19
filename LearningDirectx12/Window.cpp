@@ -90,20 +90,21 @@ namespace Program
         // ¯\_(ツ)_/¯
     }
 
-    WindowSize Window::getWindowSize()
+    WindowSize Window::GetWindowSize() const
     {
-        if (GetClientRect(m_WindowHandle, &m_WindowRect))
+        RECT windowRect;
+        if (GetClientRect(m_WindowHandle, &windowRect))
         {
             WindowSize windowSize;
-            windowSize.height = m_WindowRect.right - m_WindowRect.left;
-            windowSize.width = m_WindowRect.bottom - m_WindowRect.top;
+            windowSize.height = windowRect.right - windowRect.left;
+            windowSize.width = windowRect.bottom - windowRect.top;
             return windowSize;
         }
         PostQuitMessage(GetLastError());
         return { 0, 0 };
     }
 
-    HWND Window::getWindowHandle()
+    HWND Window::GetWindowHandle() const
     {
         return m_WindowHandle;
     }

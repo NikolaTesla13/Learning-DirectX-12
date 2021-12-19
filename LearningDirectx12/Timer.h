@@ -1,6 +1,5 @@
 #pragma once
 
-#include "System.h"
 #include "Logger.h"
 
 namespace Program

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "System.h"
-
 namespace Program
 {
 	struct LoggerProps

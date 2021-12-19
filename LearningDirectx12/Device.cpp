@@ -1,4 +1,6 @@
+#include "CommandQueue.h" 
 #include "Device.h"
+
 
 namespace Program::DX12
 {
@@ -26,6 +28,22 @@ namespace Program::DX12
 	void Device::CreateFence(ComPtr<ID3D12Fence>& fence) const
 	{
 		ThrowIfFailed(m_Device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf())));
+	}
+
+	void Device::CreateSwapchain(ComPtr<ID3D12CommandQueue> commandQueue, HWND hWnd, DXGI_SWAP_CHAIN_DESC1* desc, ComPtr<IDXGISwapChain1>& swapchain) const
+	{
+		ThrowIfFailed(m_Factory->CreateSwapChainForHwnd(commandQueue.Get(), hWnd, desc, nullptr, nullptr, &swapchain));
+		ThrowIfFailed(m_Factory->MakeWindowAssociation(hWnd, DXGI_MWA_NO_ALT_ENTER));
+	}
+
+	void Device::CreateDescriptorHeap(ComPtr<ID3D12DescriptorHeap>& descriptorHeap, D3D12_DESCRIPTOR_HEAP_DESC* desc) const
+	{
+		ThrowIfFailed(m_Device->CreateDescriptorHeap(desc, IID_PPV_ARGS(&descriptorHeap)));
+	}
+
+	void Device::CreateRenderTargetViews(ComPtr<ID3D12Resource>& resource, CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle) const
+	{
+		m_Device->CreateRenderTargetView(resource.Get(), nullptr, rtvHandle);
 	}
 
 	void Device::CreateFactory()

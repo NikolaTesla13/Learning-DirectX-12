@@ -28,15 +28,15 @@ namespace Program
 		void EndFrame();
 		void Quit();
 
-		WindowSize getWindowSize();
-		HWND getWindowHandle();
+		WindowSize GetWindowSize() const;
+		HWND GetWindowHandle() const;
 
 		static bool m_DidResize;
 
 	private:
 		HWND m_WindowHandle;
-		WNDCLASSEXW m_WindowClass;
 		RECT m_WindowRect;
+		WNDCLASSEXW m_WindowClass;
 		bool m_ShouldClose = false;
 	};
 }

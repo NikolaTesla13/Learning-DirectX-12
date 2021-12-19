@@ -11,6 +11,7 @@ namespace Program::DX12
 		~Device() {};
 
 		void CreateCommandQueue(D3D12_COMMAND_QUEUE_DESC* desc, ID3D12CommandQueue* commandQueue) const;
+		void CreateCommandAllocator(ID3D12CommandAllocator* commandAllocator) const;
 
 	private:
 		void CreateFactory();

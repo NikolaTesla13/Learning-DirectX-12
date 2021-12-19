@@ -14,6 +14,11 @@ namespace Program::DX12
 		ThrowIfFailed(m_Device->CreateCommandQueue(desc, IID_PPV_ARGS(&commandQueue)));
 	}
 
+	void Device::CreateCommandAllocator(ID3D12CommandAllocator* commandAllocator) const
+	{
+		ThrowIfFailed(m_Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator)));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;

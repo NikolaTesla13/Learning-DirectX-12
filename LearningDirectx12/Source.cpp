@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "Timer.h"
 #include "Device.h"
+#include "CommandQueue.h"
+#include "CommandAllocator.h"
 
 using namespace Program;
 
@@ -25,6 +27,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     windowProps.instance = hInstance;
 
     DX12::Device device;
+    DX12::CommandQueue commandQueue(device);
+    DX12::CommandAllocator commandAllocator(device);
 
     Window window(windowProps);
 

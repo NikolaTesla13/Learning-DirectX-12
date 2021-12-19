@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CommandAllocator.cpp" />
     <ClCompile Include="CommandQueue.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Logger.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommandAllocator.h" />
     <ClInclude Include="CommandQueue.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Logger.h" />

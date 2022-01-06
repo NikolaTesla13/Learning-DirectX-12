@@ -46,6 +46,11 @@ namespace Program::DX12
 		m_Device->CreateRenderTargetView(resource.Get(), nullptr, rtvHandle);
 	}
 
+	void Device::CreateRootSignature(ComPtr<ID3D12RootSignature>& rootSignature, ComPtr<ID3DBlob> signature) const
+	{
+		ThrowIfFailed(m_Device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature)));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;

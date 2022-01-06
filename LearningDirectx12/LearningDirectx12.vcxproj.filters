@@ -48,6 +48,9 @@
     <ClCompile Include="RenderTargetViews.cpp">
       <Filter>Source Files\Directx12</Filter>
     </ClCompile>
+    <ClCompile Include="RootSignature.cpp">
+      <Filter>Source Files\Directx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -82,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="d3dx12.h">
       <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="RootSignature.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -162,6 +162,7 @@
     <ClCompile Include="Fence.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="RenderTargetViews.cpp" />
+    <ClCompile Include="RootSignature.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Swapchain.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -172,8 +173,10 @@
     <ClInclude Include="d3dx12.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Fence.h" />
+    <ClInclude Include="Framework.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="RenderTargetViews.h" />
+    <ClInclude Include="RootSignature.h" />
     <ClInclude Include="Swapchain.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Timer.h" />

@@ -25,11 +25,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     DX12::Swapchain swapchain(device, window, commandQueue);
     DX12::RenderTargetViews renderTargetView(device, swapchain);
     DX12::RootSignature rootSignature(device);
+    DX12::PipelineState pipelineState(device, rootSignature, L"shader.hlsl");
 
     while (!window.ShouldClose())
     {
-        window.BeginFrame();
         TIME("New frame");
+        window.BeginFrame();
 
         window.Quit();
         window.EndFrame();

@@ -51,6 +51,11 @@ namespace Program::DX12
 		ThrowIfFailed(m_Device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature)));
 	}
 
+	void Device::CreateGraphicsPipelineState(ComPtr<ID3D12PipelineState>& pipelineState, D3D12_GRAPHICS_PIPELINE_STATE_DESC desc) const
+	{
+		ThrowIfFailed(m_Device->CreateGraphicsPipelineState(&desc, IID_PPV_ARGS(pipelineState.GetAddressOf())));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;

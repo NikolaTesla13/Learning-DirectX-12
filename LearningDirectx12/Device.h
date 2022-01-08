@@ -18,6 +18,7 @@ namespace Program::DX12
 		void CreateRenderTargetViews(ComPtr<ID3D12Resource>& resource, CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle) const;
 		void CreateRootSignature(ComPtr<ID3D12RootSignature>& rootSignature, ComPtr<ID3DBlob> signature) const;
 		void CreateGraphicsPipelineState(ComPtr<ID3D12PipelineState>& pipelineState, D3D12_GRAPHICS_PIPELINE_STATE_DESC desc) const;
+		void CreateCommandList(ComPtr<ID3D12GraphicsCommandList>& commandList, const ComPtr<ID3D12CommandAllocator>& commandAllocator, const ComPtr<ID3D12PipelineState>& pipelineState) const;
 
 	private:
 		void CreateFactory();

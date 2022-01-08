@@ -26,6 +26,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     DX12::RenderTargetViews renderTargetView(device, swapchain);
     DX12::RootSignature rootSignature(device);
     DX12::PipelineState pipelineState(device, rootSignature, L"shader.hlsl");
+    DX12::CommandList commandList(device, commandAllocator, pipelineState);
 
     while (!window.ShouldClose())
     {

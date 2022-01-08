@@ -11,4 +11,3 @@ namespace Program::DX12
 	{
 	}
 }
-

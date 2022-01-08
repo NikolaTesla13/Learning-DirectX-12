@@ -56,6 +56,11 @@ namespace Program::DX12
 		ThrowIfFailed(m_Device->CreateGraphicsPipelineState(&desc, IID_PPV_ARGS(pipelineState.GetAddressOf())));
 	}
 
+	void Device::CreateCommandList(ComPtr<ID3D12GraphicsCommandList>& commandList, const ComPtr<ID3D12CommandAllocator>& commandAllocator, const ComPtr<ID3D12PipelineState>& pipelineState) const
+	{
+		ThrowIfFailed(m_Device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), pipelineState.Get(), IID_PPV_ARGS(&commandList)));
+	}
+
 	void Device::CreateFactory()
 	{
 		UINT dxgiFactoryFlags = 0;

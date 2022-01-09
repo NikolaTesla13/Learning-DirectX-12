@@ -33,32 +33,70 @@ namespace Program::DX12
 	void Device::CreateSwapchain(ComPtr<ID3D12CommandQueue> commandQueue, HWND hWnd, DXGI_SWAP_CHAIN_DESC1* desc, ComPtr<IDXGISwapChain1>& swapchain) const
 	{
 		ThrowIfFailed(m_Factory->CreateSwapChainForHwnd(commandQueue.Get(), hWnd, desc, nullptr, nullptr, &swapchain));
-		ThrowIfFailed(m_Factory->MakeWindowAssociation(hWnd, DXGI_MWA_NO_ALT_ENTER));
+		ThrowIfFailed(m_Factory->MakeWindowAssociation(
+			hWnd, 
+			DXGI_MWA_NO_ALT_ENTER));
 	}
 
 	void Device::CreateDescriptorHeap(ComPtr<ID3D12DescriptorHeap>& descriptorHeap, D3D12_DESCRIPTOR_HEAP_DESC* desc) const
 	{
-		ThrowIfFailed(m_Device->CreateDescriptorHeap(desc, IID_PPV_ARGS(&descriptorHeap)));
+		ThrowIfFailed(m_Device->CreateDescriptorHeap(
+			desc, 
+			IID_PPV_ARGS(&descriptorHeap)
+		));
 	}
 
 	void Device::CreateRenderTargetViews(ComPtr<ID3D12Resource>& resource, CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle) const
 	{
-		m_Device->CreateRenderTargetView(resource.Get(), nullptr, rtvHandle);
+		m_Device->CreateRenderTargetView(
+			resource.Get(), 
+			nullptr, 
+			rtvHandle
+		);
 	}
 
 	void Device::CreateRootSignature(ComPtr<ID3D12RootSignature>& rootSignature, ComPtr<ID3DBlob> signature) const
 	{
-		ThrowIfFailed(m_Device->CreateRootSignature(0, signature->GetBufferPointer(), signature->GetBufferSize(), IID_PPV_ARGS(&rootSignature)));
+		ThrowIfFailed(m_Device->CreateRootSignature(
+			0, 
+			signature->GetBufferPointer(), 
+			signature->GetBufferSize(), 
+			IID_PPV_ARGS(&rootSignature)
+		));
 	}
 
 	void Device::CreateGraphicsPipelineState(ComPtr<ID3D12PipelineState>& pipelineState, D3D12_GRAPHICS_PIPELINE_STATE_DESC desc) const
 	{
-		ThrowIfFailed(m_Device->CreateGraphicsPipelineState(&desc, IID_PPV_ARGS(pipelineState.GetAddressOf())));
+		ThrowIfFailed(m_Device->CreateGraphicsPipelineState(
+			&desc, 
+			IID_PPV_ARGS(&pipelineState)
+		));
 	}
 
 	void Device::CreateCommandList(ComPtr<ID3D12GraphicsCommandList>& commandList, const ComPtr<ID3D12CommandAllocator>& commandAllocator, const ComPtr<ID3D12PipelineState>& pipelineState) const
 	{
-		ThrowIfFailed(m_Device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), pipelineState.Get(), IID_PPV_ARGS(&commandList)));
+		ThrowIfFailed(m_Device->CreateCommandList(
+			0, 
+			D3D12_COMMAND_LIST_TYPE_DIRECT, 
+			commandAllocator.Get(), 
+			pipelineState.Get(), 
+			IID_PPV_ARGS(&commandList)
+		));
+	}
+
+	void Device::CreateCommittedResource(ComPtr<ID3D12Resource>& resource, const UINT size) const
+	{
+		auto heapProperties = CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD);
+		auto resourceDesc = CD3DX12_RESOURCE_DESC::Buffer(size);
+
+		ThrowIfFailed(m_Device->CreateCommittedResource(
+			&heapProperties,
+			D3D12_HEAP_FLAG_NONE,
+			&resourceDesc,
+			D3D12_RESOURCE_STATE_GENERIC_READ, 
+			nullptr, 
+			IID_PPV_ARGS(&resource)
+		));
 	}
 
 	void Device::CreateFactory()

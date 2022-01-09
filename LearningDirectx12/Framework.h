@@ -12,3 +12,6 @@
 #include "RootSignature.h"
 #include "PipelineState.h"
 #include "CommandList.h"
+#include "VertexBuffer.h"
+
+using namespace Program;

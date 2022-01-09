@@ -57,6 +57,9 @@
     <ClCompile Include="CommandList.cpp">
       <Filter>Source Files\Directx12</Filter>
     </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\Directx12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
     <ClInclude Include="CommandList.h">
+      <Filter>Header Files\Directx12</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
       <Filter>Header Files\Directx12</Filter>
     </ClInclude>
   </ItemGroup>

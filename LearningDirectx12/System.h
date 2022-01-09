@@ -18,6 +18,7 @@
 #include <wrl/client.h>
 #include <wrl.h>
 #include <shellapi.h>
+#include <directxmath.h>
 
 #include <cassert>
 #include <string>
@@ -35,6 +36,7 @@
 #define TIME(x) Timer CONCAT(timer, __LINE__)(x)
 
 using Microsoft::WRL::ComPtr;
+using namespace DirectX;
 
 namespace Program::DX12
 {
